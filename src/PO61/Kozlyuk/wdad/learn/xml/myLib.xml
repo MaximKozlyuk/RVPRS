@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE library SYSTEM "library.dtd">
+<library>
+    <reader firstname="Ivan" secondname="Ivanovich">
+        <book>
+            <author>
+                <firstname>FirstName</firstname>
+                <secondname>SecondName</secondname>
+            </author>
+            <name>BookTitle</name>
+            <printyear>2018</printyear>
+            <genre value="epopee"></genre>
+        </book>
+        <takedate day="1" month="1" year="2017"></takedate>
+    </reader>
+</library>
