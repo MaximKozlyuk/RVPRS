@@ -2,68 +2,46 @@ package PO61.Kozlyuk.wdad.learn.xml;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.*;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.function.Predicate;
 
 public class XmlTask {
 
-    /*
+    private Library library;
 
-    public List<Reader> negligentReaders() –
-    возвращающий список читателей – должников (у которых книга на руках уже более 2-х недель).
-
-    public void removeBook (Reader reader, Book book) –
-    удаляющий запись о книге у заданного читателя. Записывает результат в этот же xml-документ.
-
-    public void addBook (Reader reader, Book book) –
-     добавляющий запись о книге заданному читателю. Записывает результат в этот же xml-документ.
-
-    public List<Book> debtBooks (Reader reader) –
-    возвращает список книг заданного читателя, которые он должен был вернуть
-     */
-
-    public void XmlTask () {
-        String path = new String("./src/PO61/Kozlyuk/wdad/learn/xml/myLib.xml");
-        DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-        try {
-            DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-            Document document = documentBuilder.parse(path);
-            NodeList tagEl = document.getDocumentElement().getElementsByTagName("reader");
-
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException | ParserConfigurationException e) {
-            e.printStackTrace();
-        }
-
-        /*
-        this.path = path;
-        this.xmlFile = Paths.get(path);
+    public XmlTask(String path) throws ParserConfigurationException, SAXException, IOException {
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        factory.setIgnoringComments(true);
-        factory.setIgnoringElementContentWhitespace(true);
-        factory.setValidating(true);
-        this.document = builder.parse(xmlFile.toFile());
-         */
+        Document doc = builder.parse(path);
+        Element el = doc.getDocumentElement();
+        this.library = new Library(doc, el);
 
+        System.out.println(library);
     }
 
-    private Element find(NodeList nodeList, Predicate<Element> predicate) {
-        Element element;
-        for (int i = 0; i < nodeList.getLength(); i++) {
-            element = (Element) nodeList.item(i);
-
-            if (predicate.test(element)) return element;
-        }
+    // возвращающий список читателей – должников (у которых книга на руках уже более 2-х недель).
+    public List<Reader> negligentReaders() {
         return null;
     }
+
+    // удаляющий запись о книге у заданного читателя. Записывает результат в этот же xml-документ.
+    public void removeBook (Reader reader, Book book) {
+
+    }
+
+    // добавляющий запись о книге заданному читателю. Записывает результат в этот же xml-документ.
+    public void addBook (Reader reader, Book book) {
+
+    }
+
+    // возвращает список книг заданного читателя, которые он должен был вернуть
+    public List<Book> debtBooks (Reader reader) {
+        return null;
+    }
+
 
 
 }

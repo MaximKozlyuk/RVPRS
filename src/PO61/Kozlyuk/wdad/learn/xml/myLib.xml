@@ -12,5 +12,39 @@
             <genre value="epopee"></genre>
         </book>
         <takedate day="1" month="1" year="2017"></takedate>
+        <book>
+            <author>
+                <firstname>AnotherBook</firstname>
+                <secondname>Smth</secondname>
+            </author>
+            <name>TitleOfBook</name>
+            <printyear>2000</printyear>
+            <genre value="play"></genre>
+        </book>
+        <takedate day="1" month="1" year="2017"></takedate>
+    </reader>
+    <reader firstname="Oleg" secondname="Secondnamovich">
+        <book>
+            <author>
+                <firstname>Ayn</firstname>
+                <secondname>Rand</secondname>
+            </author>
+            <name>Atlas Shrugged</name>
+            <printyear>1957</printyear>
+            <genre value="novel"></genre>
+        </book>
+        <takedate day="2" month="2" year="2016"></takedate>
+    </reader>
+    <reader firstname="Gregor" secondname="Pshepshekevich">
+        <book>
+            <author>
+                <firstname>God</firstname>
+                <secondname></secondname>
+            </author>
+            <name>Holy Bible</name>
+            <printyear>1</printyear>
+            <genre value="epos"></genre>
+        </book>
+        <takedate day="3" month="3" year="2015"></takedate>
     </reader>
 </library>
