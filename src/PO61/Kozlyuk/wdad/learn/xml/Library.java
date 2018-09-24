@@ -28,11 +28,11 @@ public class Library {
 
 
         // todo parse that shit
-        System.out.println("\n");
-        NodeList readerNodes = readers.item(0).getChildNodes();
-        for (int i = 1; i < readerNodes.getLength(); i+=2) {
-            System.out.println(readerNodes.item(i).getNodeName());
-        }
+//        System.out.println("\n");
+//        NodeList readerNodes = readers.item(0).getChildNodes();
+//        for (int i = 1; i < readerNodes.getLength(); i+=2) {
+//            System.out.println(readerNodes.item(i).getNodeName());
+//        }
 
 
         return readersList;
