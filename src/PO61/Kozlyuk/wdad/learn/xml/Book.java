@@ -34,6 +34,10 @@ class Book {
         return genre;
     }
 
+    LocalDate getTakeDate () {
+        return takeDate;
+    }
+
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder(author.toString());

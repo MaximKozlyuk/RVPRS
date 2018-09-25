@@ -67,8 +67,12 @@ public class XmlTask {
     }
 
     private Genre getGenre (String s) {
-        // todo this
-        return Genre.ARTICLE;
+        for (Genre g : Genre.values()) {
+            if (s.equalsIgnoreCase(g.toString())) {
+                return g;
+            }
+        }
+        return Genre.OTHER;
     }
 
     private NodeList getSubNodes (Node n, String s) {
@@ -85,7 +89,11 @@ public class XmlTask {
 
     // возвращающий список читателей – должников (у которых книга на руках уже более 2-х недель).
     public List<Reader> negligentReaders() {
-        return null;
+        ArrayList<Reader> r = new ArrayList<>();
+        for (int i = 0; i < library.readersAmount(); i++) {
+            // todo end
+        }
+        return r;
     }
 
     // удаляющий запись о книге у заданного читателя. Записывает результат в этот же xml-документ.
@@ -100,7 +108,8 @@ public class XmlTask {
 
     // возвращает список книг заданного читателя, которые он должен был вернуть
     public List<Book> debtBooks (Reader reader) {
-        return null;
+        if (reader == null) { throw new NullPointerException(); }
+        return reader.getDebtBooks();
     }
 
 
