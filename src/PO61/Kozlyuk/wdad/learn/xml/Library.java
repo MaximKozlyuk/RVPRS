@@ -1,44 +1,41 @@
 package PO61.Kozlyuk.wdad.learn.xml;
 
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NodeList;
-
 import java.util.ArrayList;
 
 public class Library {
 
-    private Document doc;
-    private Element rootEl;
-    private ArrayList<Reader> list;
+    private ArrayList<Reader> readers;
 
-    Library (Document doc, Element el) {
-        this.doc = doc;
-        this.rootEl = el;
-        list = findAllReaders();
+    Library () {
+        readers = new ArrayList<>();
     }
 
-    private ArrayList<Reader> findAllReaders () {
-        ArrayList<Reader> readersList = new ArrayList<>();
-        NodeList readers = rootEl.getElementsByTagName("reader");
+    Library (ArrayList<Reader> list) {
+        if (list == null) { throw new NullPointerException(); }
+        this.readers = list;
+    }
 
-
-        for (int i = 0; i < readers.getLength(); i++) {
-            ((Element)readers.item(0)).getElementsByTagName("book");
-            ((Element)readers.item(0)).getElementsByTagName("takedate");
+    Reader getReader (String firstName, String secondName) {
+        for (int i = 0; i < readers.size(); i++) {
+            if (readers.get(i).getFirstName().equals(firstName) && readers.get(i).getSecondName().equals(secondName)) {
+                return readers.get(i);
+            }
         }
+        return null;
+    }
 
-        return readersList;
+    void addReader (Reader r) {
+        if (r == null) { throw new NullPointerException(); }
+        readers.add(r);
     }
 
     @Override
     public String toString() {
         StringBuilder s = new StringBuilder("Library, ");
-        s.append(list.size()).append(" reader(s)\n");
-        for (int i = 0; i < list.size(); i++) {
-            s.append(list.get(i).toString());
+        s.append(readers.size()).append(" reader(s):\n");
+        for (int i = 0; i < readers.size(); i++) {
+            s.append(readers.get(i).toString()).append("\n");
         }
-        s.append("\n");
         return s.toString();
     }
 }

@@ -11,7 +11,7 @@ import java.io.InputStreamReader;
 public class Application {
     public static void main(String[] args) {
 
-        System.out.println("I’m Maxim Kozlyuk, and I’m not a monkey");
+        System.out.println("I’m Maxim Kozlyuk, and I’m not a monkey\n");
 
         Runtime rt = Runtime.getRuntime();
         try {

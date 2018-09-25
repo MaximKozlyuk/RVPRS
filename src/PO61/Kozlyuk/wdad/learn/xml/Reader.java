@@ -8,6 +8,11 @@ public class Reader extends Human{
 
     Reader(String firstName, String secondName) {
         super(firstName, secondName);
+        debtBooks = new ArrayList<>();
+    }
+
+    Reader () {
+        this(null, null);
     }
 
     void addTookedBook (Book book) {
@@ -57,7 +62,7 @@ public class Reader extends Human{
         } else {
             s.append("\nbook(s) debt: ").append(debtBooks.size()).append("\n");
             for (int i = 0; i < debtBooks.size(); i++) {
-                s.append(debtBooks.toString()).append("\n");
+                s.append(debtBooks.get(i).toString()).append("\n");
             }
         }
         return s.toString();

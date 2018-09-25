@@ -34,6 +34,16 @@
             <genre value="novel"></genre>
         </book>
         <takedate day="2" month="2" year="2016"></takedate>
+        <book>
+            <author>
+                <firstname>Random</firstname>
+                <secondname>Author</secondname>
+            </author>
+            <name>Random Name</name>
+            <printyear>1900</printyear>
+            <genre value="novel"></genre>
+        </book>
+        <takedate day="3" month="5" year="2015"></takedate>
     </reader>
     <reader firstname="Gregor" secondname="Pshepshekevich">
         <book>
