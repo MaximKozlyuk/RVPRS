@@ -15,13 +15,11 @@ public class Reader extends Human{
         this(null, null);
     }
 
-    void addTookedBook (Book book) {
-        if (book == null ) { throw new NullPointerException(); }
+    void addTakenBook(Book book) {
         debtBooks.add(book);
     }
 
     boolean returnBook (Book book) {
-        if (book == null ) { throw new NullPointerException(); }
         if (debtBooks.contains(book)) {
             debtBooks.remove(book);
             return true;

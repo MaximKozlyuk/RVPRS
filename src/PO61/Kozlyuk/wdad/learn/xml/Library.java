@@ -1,6 +1,9 @@
 package PO61.Kozlyuk.wdad.learn.xml;
 
+import com.google.api.client.util.DateTime;
+
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 
 public class Library {
@@ -25,26 +28,34 @@ public class Library {
         return null;
     }
 
+    Reader getReader (int i) {
+        return readers.get(i);
+    }
+
     void addReader (Reader r) {
         if (r == null) { throw new NullPointerException(); }
         readers.add(r);
     }
 
-    Reader getReader (int i) {
-        return readers.get(i);
-    }
+
 
     int readersAmount () {
         return readers.size();
     }
 
     boolean isDebtor (Reader r) {
-        for (int b = 0; b < r.getDebtBooks().size(); b++) {
-//            if (LocalDate.now().minus(r.getDebtBooks().get(b).getTakeDate())) {
-//  todo end
-//            }
+        for (Book b : r.getDebtBooks()) {
+            if (getBookUsageDays(b) > 14) {
+                return true;
+            }
         }
         return false;
+    }
+
+    private int getBookUsageDays (Book book) {
+        int counter = 0;
+        // todo end this
+        return counter;
     }
 
     @Override

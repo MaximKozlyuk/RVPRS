@@ -7,8 +7,13 @@ import javax.xml.parsers.ParserConfigurationException;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.time.LocalDate;
+import java.time.Period;
 
 public class Application {
+
+    static { }
+
     public static void main(String[] args) {
 
         System.out.println("I’m Maxim Kozlyuk, and I’m not a monkey\n");

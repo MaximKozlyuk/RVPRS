@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE library SYSTEM "library.dtd">
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <library>
     <reader firstname="Ivan" secondname="Ivanovich">
         <book>
@@ -9,9 +8,9 @@
             </author>
             <name>BookTitle</name>
             <printyear>2018</printyear>
-            <genre value="epopee"></genre>
+            <genre value="epopee"/>
         </book>
-        <takedate day="1" month="1" year="2017"></takedate>
+        <takedate day="1" month="1" year="2019"/>
         <book>
             <author>
                 <firstname>AnotherBook</firstname>
@@ -19,9 +18,9 @@
             </author>
             <name>TitleOfBook</name>
             <printyear>2000</printyear>
-            <genre value="play"></genre>
+            <genre value="play"/>
         </book>
-        <takedate day="1" month="1" year="2017"></takedate>
+        <takedate day="1" month="1" year="2017"/>
     </reader>
     <reader firstname="Oleg" secondname="Secondnamovich">
         <book>
@@ -31,9 +30,9 @@
             </author>
             <name>Atlas Shrugged</name>
             <printyear>1957</printyear>
-            <genre value="novel"></genre>
+            <genre value="novel"/>
         </book>
-        <takedate day="2" month="2" year="2016"></takedate>
+        <takedate day="2" month="2" year="2016"/>
         <book>
             <author>
                 <firstname>Random</firstname>
@@ -41,20 +40,20 @@
             </author>
             <name>Random Name</name>
             <printyear>1900</printyear>
-            <genre value="novel"></genre>
+            <genre value="novel"/>
         </book>
-        <takedate day="3" month="5" year="2015"></takedate>
+        <takedate day="3" month="5" year="2015"/>
     </reader>
     <reader firstname="Gregor" secondname="Pshepshekevich">
         <book>
             <author>
                 <firstname>God</firstname>
-                <secondname></secondname>
+                <secondname/>
             </author>
             <name>Holy Bible</name>
             <printyear>1</printyear>
-            <genre value="epos"></genre>
+            <genre value="epos"/>
         </book>
-        <takedate day="3" month="3" year="2015"></takedate>
+        <takedate day="10" month="9" year="2018"/>
     </reader>
 </library>
