@@ -25,17 +25,11 @@ public class XmlTask {
         DocumentBuilder builder = factory.newDocumentBuilder();
         doc = builder.parse(path);
         pathToXML = path;
-
         library = new Library(parseAllReaders());
-        System.out.println(library);
-        System.out.println("DEBTORS");
-        ArrayList<Reader> debt = (ArrayList<Reader>) negligentReaders();
-        for (Reader d : debt) {
-            System.out.println(d.toString());
-        }
-        //addBook(library.getReader(1), library.getReader(1).getDebtBooks().get(0));
+    }
 
-        //removeBook(library.getReader(0), library.getReader(0).getDebtBooks().get(0));
+    Library getLibrary () {
+        return library;
     }
 
     // я слишком поздно узнал про jaxb...
