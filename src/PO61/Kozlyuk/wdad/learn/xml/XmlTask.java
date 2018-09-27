@@ -28,16 +28,17 @@ public class XmlTask {
 
         library = new Library(parseAllReaders());
         System.out.println(library);
-        System.out.println("\nDEBTORS");
+        System.out.println("DEBTORS");
         ArrayList<Reader> debt = (ArrayList<Reader>) negligentReaders();
         for (Reader d : debt) {
             System.out.println(d.toString());
         }
-        // add
-        addBook(library.getReader(1), library.getReader(1).getDebtBooks().get(0));
+        //addBook(library.getReader(1), library.getReader(1).getDebtBooks().get(0));
+
+        //removeBook(library.getReader(0), library.getReader(0).getDebtBooks().get(0));
     }
 
-
+    // я слишком поздно узнал про jaxb...
     private ArrayList<Reader> parseAllReaders() {
         ArrayList<Reader> readerList = new ArrayList<>();
         NodeList readerNodes = doc.getDocumentElement().getElementsByTagName("reader");
@@ -121,8 +122,29 @@ public class XmlTask {
         ).returnBook(book);
 
         Node r = getReaderFromDoc(reader.getFirstName(), reader.getSecondName());
-        //((Element)r).getElementsByTagName("book")   // todo end
+        NodeList books = ((Element)r).getElementsByTagName("book");
 
+        NodeList takeDates = ((Element)r).getElementsByTagName("takedate");
+        for (int b = 0; b < books.getLength(); b++) {
+            if (isNodeEqualBook((Element)books.item(b),book)) {
+                books.item(b).getParentNode().removeChild(books.item(b));
+                takeDates.item(b).getParentNode().removeChild(takeDates.item(b));
+            }
+        }
+        try {
+            saveXML();
+        } catch (TransformerException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private boolean isNodeEqualBook (Element e, Book b) {
+        NodeList author = e.getElementsByTagName("author");
+        return ((Element)author.item(0)).getElementsByTagName("firstname").item(0).getTextContent().equals(b.getAuthor().getFirstName()) &&
+                ((Element)author.item(0)).getElementsByTagName("secondname").item(0).getTextContent().equals(b.getAuthor().getSecondName()) &&
+               e.getElementsByTagName("name").item(0).getTextContent().equals(b.getName()) &&
+               (Integer.parseInt(e.getElementsByTagName("printyear").item(0).getTextContent()) == b.getPrintyear()) &&
+                e.getElementsByTagName("genre").item(0).getAttributes().item(0).getTextContent().equalsIgnoreCase(b.getGenre().toString());
     }
 
     // добавляющий запись о книге заданному читателю. Записывает результат в этот же xml-документ.

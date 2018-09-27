@@ -1,19 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<library>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library>
     <reader firstname="Ivan" secondname="Ivanovich">
         <book>
             <author>
-                <firstname>FirstName</firstname>
-                <secondname>SecondName</secondname>
-            </author>
-            <name>BookTitle</name>
-            <printyear>2018</printyear>
-            <genre value="epopee"/>
-        </book>
-        <takedate day="1" month="1" year="2019"/>
-        <book>
-            <author>
-                <firstname>AnotherBook</firstname>
+                <firstname>AnotherAuthor</firstname>
                 <secondname>Smth</secondname>
             </author>
             <name>TitleOfBook</name>
@@ -48,7 +37,7 @@
         <book>
             <author>
                 <firstname>God</firstname>
-                <secondname/>
+                <secondname>God</secondname>
             </author>
             <name>Holy Bible</name>
             <printyear>1</printyear>
