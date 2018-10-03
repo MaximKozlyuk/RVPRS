@@ -17,12 +17,14 @@ public class TestXmlTask {
                  LocalDate.of(2018,9,10)
          );
 
-         //task.addBook(task.getLibrary().getReader(0),b);
+         /*
+         task.addBook(task.getLibrary().getReader(0),b);
 
-//         task.removeBook(
-//                 task.getLibrary().getReader(0),
-//                 task.getLibrary().getReader(0).getDebtBooks().get(1)
-//         );
+         task.removeBook(
+                 task.getLibrary().getReader(0),
+                 task.getLibrary().getReader(0).getDebtBooks().get(1)
+         );
+         */
 
          System.out.println("negligentReaders");
          ArrayList<Reader> r = (ArrayList<Reader>) task.negligentReaders();
