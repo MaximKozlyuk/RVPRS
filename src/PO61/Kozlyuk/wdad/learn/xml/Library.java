@@ -37,8 +37,6 @@ public class Library {
         readers.add(r);
     }
 
-
-
     int readersAmount () {
         return readers.size();
     }
