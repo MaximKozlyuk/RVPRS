@@ -54,6 +54,6 @@
             <printyear>1</printyear>
             <genre value="epos"/>
         </book>
-        <takedate day="10" month="9" year="2018"/>
+        <takedate day="3" month="10" year="2018"/>
     </reader>
 </library>

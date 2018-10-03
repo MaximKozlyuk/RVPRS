@@ -1,9 +1,6 @@
 package PO61.Kozlyuk.wdad.learn.xml;
 
-import com.google.api.client.util.DateTime;
-
 import java.time.LocalDate;
-import java.time.Period;
 import java.util.ArrayList;
 
 public class Library {
@@ -51,9 +48,7 @@ public class Library {
     }
 
     private int getBookUsageDays (Book book) {
-        int counter = 0;
-        // todo end this
-        return counter;
+        return (int)(LocalDate.now().toEpochDay() - book.getTakeDate().toEpochDay());
     }
 
     @Override
