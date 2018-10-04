@@ -1,6 +1,7 @@
 package PO61.Kozlyuk.wdad.data.managers;
 
 import org.w3c.dom.*;
+import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -12,8 +13,8 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-import java.io.File;
-import java.io.IOException;
+import javax.xml.xpath.*;
+import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Properties;
@@ -24,6 +25,7 @@ public class PreferencesManager {
     private Path xmlFile;
     private String path;
     private Document document;
+    private XPath xPath;
 
     private PreferencesManager(String path) throws IOException, SAXException, ParserConfigurationException {
         this.path = path;
@@ -34,6 +36,8 @@ public class PreferencesManager {
         factory.setIgnoringElementContentWhitespace(true);
         factory.setValidating(true);
         this.document = builder.parse(xmlFile.toFile());
+        XPathFactory xpathFactory = XPathFactory.newInstance();
+        this.xPath = xpathFactory.newXPath();
     }
 
     public static PreferencesManager getInstance(String path) throws IOException, SAXException, ParserConfigurationException {
@@ -54,6 +58,11 @@ public class PreferencesManager {
     }
 
     public String getProperty(String key) {
+        //todo use xPath
+        Node node = (Node)xPath.evaluate(key.replace('.', '/'), document, XPathConstants.NODE);
+        System.out.println(node.getNodeType());
+        System.out.println(node.getNodeName());
+        System.out.println(node.getNodeValue());
         return document.getElementsByTagName(lastElementKey(key)).item(0).getTextContent();
     }
 

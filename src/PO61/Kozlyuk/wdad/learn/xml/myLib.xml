@@ -3,8 +3,8 @@
     <reader firstname="Ivan" secondname="Ivanovich">
         <book>
             <author>
-                <firstname>AnotherAuthor</firstname>
                 <secondname>Smth</secondname>
+                <firstname>AnotherAuthor</firstname>
             </author>
             <name>TitleOfBook</name>
             <printyear>2000</printyear>
@@ -20,7 +20,7 @@
             <printyear>2000</printyear>
             <genre value="essay"/>
         </book>
-        <takedate day="10" month="9" year="2018"/>
+        <takedate month="9" day="15" year="2018"/>
     </reader>
     <reader firstname="Oleg" secondname="Secondnamovich">
         <book>
