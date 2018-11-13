@@ -36,14 +36,12 @@ public class XmlTask {
     private ArrayList<Reader> parseAllReaders() {
         ArrayList<Reader> readerList = new ArrayList<>();
         NodeList readerNodes = doc.getDocumentElement().getElementsByTagName("reader");
-        NodeList books;
-        NodeList takeDates;
+        NodeList books, takeDates, author;
         Reader reader;
-        NodeList author;
         for (int r = 0; r < readerNodes.getLength(); r++) {
 
-            reader = new Reader(readerNodes.item(r).getAttributes().item(0).getTextContent(),
-                    readerNodes.item(r).getAttributes().item(1).getTextContent());
+            reader = new Reader(readerNodes.item(r).getAttributes().getNamedItem("firstname").getTextContent(),
+                    readerNodes.item(r).getAttributes().getNamedItem("secondname").getTextContent());
 
             books = getSubNodes(readerNodes.item(r), "book");
             takeDates = getSubNodes(readerNodes.item(r), "takedate");
@@ -63,7 +61,7 @@ public class XmlTask {
                                 getGenre(
                                         getSubNodes(books.item(b), "genre").item(0).getAttributes().item(0).getTextContent()
                                 ),
-                                getTakeDate(takeDates.item(b))
+                                getTakeDate((Element)takeDates.item(b))
                         )
                 );
             }
@@ -85,17 +83,16 @@ public class XmlTask {
         return ((Element) n).getElementsByTagName(s);
     }
 
-    private LocalDate getTakeDate(Node n) {
+    private LocalDate getTakeDate(Element b) {
         return LocalDate.of(
-                Integer.parseInt(n.getAttributes().item(2).getTextContent()),
-                Integer.parseInt(n.getAttributes().item(1).getTextContent()),
-                Integer.parseInt(n.getAttributes().item(0).getTextContent())
+                Integer.parseInt(b.getAttribute("year")),
+                Integer.parseInt(b.getAttribute("month")),
+                Integer.parseInt(b.getAttribute("day"))
         );
     }
 
     // возвращающий список читателей – должников (у которых книга на руках уже более 2-х недель).
     public List<Reader> negligentReaders() {
-        Period p;
         ArrayList<Reader> r = new ArrayList<>();
         for (int i = 0; i < library.readersAmount(); i++) {
             if (library.isDebtor(library.getReader(i))) {
@@ -132,13 +129,21 @@ public class XmlTask {
         }
     }
 
+    // todo remove method's .item(n)
     private boolean isNodeEqualBook (Element e, Book b) {
-        NodeList author = e.getElementsByTagName("author");
-        return ((Element)author.item(0)).getElementsByTagName("firstname").item(0).getTextContent().equals(b.getAuthor().getFirstName()) &&
-                ((Element)author.item(0)).getElementsByTagName("secondname").item(0).getTextContent().equals(b.getAuthor().getSecondName()) &&
-               e.getElementsByTagName("name").item(0).getTextContent().equals(b.getName()) &&
-               (Integer.parseInt(e.getElementsByTagName("printyear").item(0).getTextContent()) == b.getPrintyear()) &&
-                e.getElementsByTagName("genre").item(0).getAttributes().item(0).getTextContent().equalsIgnoreCase(b.getGenre().toString());
+        String firstname, secondname, name, genre;
+        Element author = (Element)e.getElementsByTagName("author").item(0);
+        firstname = author.getElementsByTagName("firstname").item(0).getTextContent();
+        secondname = author.getElementsByTagName("secondname").item(0).getTextContent();
+        name = e.getElementsByTagName("name").item(0).getTextContent();
+        int printyear = Integer.parseInt(e.getElementsByTagName("printyear").item(0).getTextContent());
+        genre = e.getElementsByTagName("genre").item(0).getAttributes().getNamedItem("value").getTextContent();
+
+        return firstname.equals(b.getAuthor().getFirstName()) &&
+                secondname.equals(b.getAuthor().getSecondName()) &&
+               name.equals(b.getName()) &&
+               printyear == b.getPrintyear() &&
+               genre.equalsIgnoreCase(b.getGenre().toString());
     }
 
     // добавляющий запись о книге заданному читателю. Записывает результат в этот же xml-документ.
