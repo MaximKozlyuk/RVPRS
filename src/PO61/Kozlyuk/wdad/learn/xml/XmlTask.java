@@ -9,12 +9,13 @@ import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 import java.io.File;
 import java.io.IOException;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class XmlTask {
+public class XmlTask implements Serializable {
 
     private Library library;
     private Document doc;
@@ -183,6 +184,10 @@ public class XmlTask {
         r.appendChild(bookEl);
         r.appendChild(takedateEl);
 
+        library.getReader(
+                reader.getFirstName(),
+                reader.getSecondName()
+        ).addTakenBook(book);
         try {
             saveXML();
         } catch (TransformerException e) {
@@ -210,9 +215,6 @@ public class XmlTask {
 
     // возвращает список книг заданного читателя, которые он должен был вернуть
     public List<Book> debtBooks(Reader reader) {
-        if (reader == null) {
-            throw new NullPointerException();
-        }
         return reader.getDebtBooks();
     }
 

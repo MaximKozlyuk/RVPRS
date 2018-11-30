@@ -1,8 +1,9 @@
 package PO61.Kozlyuk.wdad.learn.xml;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
-class Book {
+public class Book implements Serializable {
 
     private Author author;
     private String name;
@@ -10,7 +11,7 @@ class Book {
     private Genre genre;
     private LocalDate takeDate;
 
-    Book(String name, Author author, int printYear, Genre genre, LocalDate takeDate) {
+    public Book(String name, Author author, int printYear, Genre genre, LocalDate takeDate) {
         this.name = name;
         this.author = author;
         this.printYear = printYear;
@@ -18,11 +19,11 @@ class Book {
         this.takeDate = takeDate;
     }
 
-    Author getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    String getName() {
+    public String getName() {
         return name;
     }
 
@@ -34,7 +35,7 @@ class Book {
         return genre;
     }
 
-    LocalDate getTakeDate () {
+    public LocalDate getTakeDate () {
         return takeDate;
     }
 
@@ -44,5 +45,14 @@ class Book {
         s.append(" - ").append(name).append(" ").append(printYear).append(", ").append(genre);
         s.append("; Take date: ").append(takeDate);
         return s.toString();
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == this) { return true; }
+        if (!(obj instanceof Book)) { return false; }
+        Book o = (Book) obj;
+        return o.author.equals(author) && o.name.equals(name) && o.printYear == printYear &&
+                o.genre == genre && o.takeDate.equals(takeDate);
     }
 }

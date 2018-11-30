@@ -30,8 +30,6 @@ public class PreferencesManager {
     private Document document;
     private XPath xPath;
 
-    public static final String prefPath = "./src/PO61/Kozlyuk/wdad/learn/xml/myLib.xml";     // for tests
-
     private static final String[] keys = {"appconfig.rmi.server.registry.createregistry",
             "appconfig.rmi.server.registry.registryaddress",
             "appconfig.rmi.server.registry.registryport",
@@ -66,27 +64,31 @@ public class PreferencesManager {
     }
 
     public void setProperty(String key, String value) {
-        document.getElementsByTagName(lastElementKey(key)).item(0).setTextContent(value);
+        //document.getElementsByTagName(lastElementKey(key)).item(0).setTextContent(value);
+        try {
+            XPathExpression expr = xPath.compile(key.replace('.','/'));
+
+            Node prop = (Node) expr.evaluate(document, XPathConstants.NODE);
+            prop.setTextContent(value);
+            System.out.println("done");
+        } catch (XPathExpressionException e) {
+            e.printStackTrace();
+        }
         saveXML();
     }
 
     // todo create PrefManager exception
     public String getProperty(String key) throws PreferencesManagerException {
         //todo use xPath
-        Node node;
+        String out;
         try {
-            node = (Node)xPath.evaluate(key.replace('.', '/'), document, XPathConstants.NODE);
-            // todo understand why null
-            if (document == null) {
-                System.out.println("null");
-            } else {
-                System.out.println("NOT null");
-            }
-
+            XPathExpression expr = xPath.compile(key.replace('.', '/'));
+            //System.out.println(expr);
+            out = expr.evaluate(document);
         } catch (XPathExpressionException e) {
             throw new PreferencesManagerException("smth happened with preferences");
         }
-        return node.getNodeValue();
+        return out;
     }
 
     public void setProperties(Hashtable<String,String> table) {
@@ -100,11 +102,9 @@ public class PreferencesManager {
     // todo hash Table , remove Properties
     public Hashtable<String, String> getProperties() {
         Hashtable<String, String> props = new Hashtable<>();
-        //Properties properties = new Properties();
         for(String s : keys){
-            //properties.setProperty(s,document.getElementsByTagName(lastElementKey(s)).item(0).getTextContent());
             try {
-                props.put(s, getProperty(s));   // todo test
+                props.put(s, getProperty(s));
             } catch (PreferencesManagerException e) {
                 e.printStackTrace();
             }

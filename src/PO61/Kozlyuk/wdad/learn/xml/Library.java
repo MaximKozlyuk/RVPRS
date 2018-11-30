@@ -1,9 +1,10 @@
 package PO61.Kozlyuk.wdad.learn.xml;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class Library {
+public class Library implements Serializable {
 
     private ArrayList<Reader> readers;
 

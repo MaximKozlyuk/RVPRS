@@ -1,27 +1,26 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<library>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><library>
     <reader firstname="Ivan" secondname="Ivanovich">
         <book>
             <author>
+                <firstname>FirstName</firstname>
                 <secondname>SecondName</secondname>
-                <firstname>Firstname</firstname>
+            </author>
+            <name>BookTitle</name>
+            <printyear>2018</printyear>
+            <genre value="epopee"/>
+        </book>
+        <takedate day="1" month="1" year="2019"/>
+        <book>
+            <author>
+                <firstname>AnotherBook</firstname>
+                <secondname>Smth</secondname>
             </author>
             <name>TitleOfBook</name>
             <printyear>2000</printyear>
             <genre value="play"/>
         </book>
         <takedate day="1" month="1" year="2017"/>
-        <book>
-            <author>
-                <firstname>NickName</firstname>
-                <secondname>Sname</secondname>
-            </author>
-            <name>The New Book</name>
-            <printyear>2000</printyear>
-            <genre value="essay"/>
-        </book>
-        <takedate month="9" day="15" year="2018"/>
-    </reader>
+    <book><author><firstname>Blokh</firstname><secondname>Joshua</secondname></author><name>JavaGuide</name><printyear>2005</printyear><genre value="essay"/></book><takedate day="29" month="11" year="2018"/></reader>
     <reader firstname="Oleg" secondname="Secondnamovich">
         <book>
             <author>
@@ -48,12 +47,12 @@
         <book>
             <author>
                 <firstname>God</firstname>
-                <secondname>God</secondname>
+                <secondname/>
             </author>
             <name>Holy Bible</name>
             <printyear>1</printyear>
             <genre value="epos"/>
         </book>
-        <takedate day="3" month="10" year="2018"/>
+        <takedate day="10" month="9" year="2018"/>
     </reader>
 </library>
