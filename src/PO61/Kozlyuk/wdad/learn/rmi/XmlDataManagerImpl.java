@@ -1,5 +1,6 @@
 package PO61.Kozlyuk.wdad.learn.rmi;
 
+import PO61.Kozlyuk.wdad.data.managers.DataManager;
 import PO61.Kozlyuk.wdad.learn.xml.Reader;
 import PO61.Kozlyuk.wdad.learn.xml.XmlTask;
 import org.xml.sax.SAXException;
@@ -8,17 +9,13 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import PO61.Kozlyuk.wdad.learn.xml.Book;
 import java.io.IOException;
-import java.io.Serializable;
-import java.rmi.Remote;
 import java.rmi.RemoteException;
-import java.rmi.server.RemoteObject;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-public class XmlDataManagerImpl implements XmlDataManager {
+public class XmlDataManagerImpl implements DataManager {
 
     private XmlTask xmlTask;
 

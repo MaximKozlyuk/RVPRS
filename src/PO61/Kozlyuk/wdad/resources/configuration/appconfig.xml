@@ -15,4 +15,13 @@
         </client>
         <classprovider>http://www.yourhost.free.ru/cp/cp.jar</classprovider>
     </rmi>
+    <datasource>
+        <classname>CLASSNAME</classname>
+        <drivertype>org.postgresql.Driver</drivertype>
+        <hostName>127.0.0.1</hostName>
+        <port>5432</port>
+        <DBName>library</DBName>
+        <user>max</user>
+        <pass></pass>
+    </datasource>
 </appconfig>

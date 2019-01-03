@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Reader extends Human{
 
+    private long id;
     private ArrayList<Book> debtBooks;
 
     public Reader(String firstName, String secondName) {
@@ -15,11 +16,11 @@ public class Reader extends Human{
         this(null, null);
     }
 
-    void addTakenBook(Book book) {
+    public void addTakenBook(Book book) {
         debtBooks.add(book);
     }
 
-    boolean returnBook (Book book) {
+    public boolean returnBook (Book book) {
 //        if (debtBooks.contains(book)) {
 //            debtBooks.remove(book);
 //            return true;
@@ -35,28 +36,40 @@ public class Reader extends Human{
         return false;
     }
 
-    ArrayList<Book> getDebtBooks() {
+
+
+    public ArrayList<Book> getDebtBooks() {
         return debtBooks;
     }
 
     @Override
-    String getFirstName() {
+    public String getFirstName() {
         return super.getFirstName();
     }
 
     @Override
-    String getSecondName() {
+    public String getSecondName() {
         return super.getSecondName();
     }
 
     @Override
-    void setFirstName(String firstName) {
+    public void setFirstName(String firstName) {
         super.setFirstName(firstName);
     }
 
     @Override
-    void setSecondName(String secondName) {
+    public void setSecondName(String secondName) {
         super.setSecondName(secondName);
+    }
+
+    @Override
+    public long getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

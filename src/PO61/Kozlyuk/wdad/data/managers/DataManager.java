@@ -1,4 +1,4 @@
-package PO61.Kozlyuk.wdad.learn.rmi;
+package PO61.Kozlyuk.wdad.data.managers;
 
 import PO61.Kozlyuk.wdad.learn.xml.Reader;
 
@@ -7,7 +7,6 @@ import PO61.Kozlyuk.wdad.learn.xml.Book;
 import java.io.Serializable;
 import java.rmi.Remote;
 import java.time.LocalDate;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,7 +24,7 @@ import java.util.List;
  * возвращает Hashmap для получения даты возврата книги заданного читателя
  */
 
-public interface XmlDataManager extends Remote, Serializable {
+public interface DataManager extends Remote, Serializable {
 
     List<Reader> negligentReaders ();
 

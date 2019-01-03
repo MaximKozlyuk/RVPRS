@@ -20,7 +20,7 @@
             <genre value="play"/>
         </book>
         <takedate day="1" month="1" year="2017"/>
-    <book><author><firstname>Blokh</firstname><secondname>Joshua</secondname></author><name>JavaGuide</name><printyear>2005</printyear><genre value="essay"/></book><takedate day="29" month="11" year="2018"/></reader>
+    </reader>pwd
     <reader firstname="Oleg" secondname="Secondnamovich">
         <book>
             <author>

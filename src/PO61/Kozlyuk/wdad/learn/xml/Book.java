@@ -5,6 +5,8 @@ import java.time.LocalDate;
 
 public class Book implements Serializable {
 
+    private long id;
+
     private Author author;
     private String name;
     private int printYear;
@@ -37,6 +39,14 @@ public class Book implements Serializable {
 
     public LocalDate getTakeDate () {
         return takeDate;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

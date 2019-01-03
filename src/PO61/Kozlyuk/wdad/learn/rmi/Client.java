@@ -1,5 +1,6 @@
 package PO61.Kozlyuk.wdad.learn.rmi;
 
+import PO61.Kozlyuk.wdad.data.managers.DataManager;
 import PO61.Kozlyuk.wdad.data.managers.PreferencesManager;
 import PO61.Kozlyuk.wdad.data.managers.PreferencesManagerException;
 import PO61.Kozlyuk.wdad.learn.xml.Author;
@@ -26,7 +27,9 @@ import java.util.Set;
 public class Client {
 
     private static PreferencesManager preferencesManager;
-    private static final String XML_APP_CONFIG_PATH = "./src/PO61/Kozlyuk/wdad/resources/configuration/appconfig.xml";
+    private static final String XML_APP_CONFIG_PATH = "appconfig.xml";
+    //private static final String XML_APP_CONFIG_PATH = "/src/PO61/Kozlyuk/wdad/resources/configuration/appconfig.xml";
+    //private static final String XML_APP_CONFIG_PATH = "generated-sources/appconfig.xml";
 
     private static int registryPort;
     static private String securityPolicyPath;
@@ -77,7 +80,7 @@ public class Client {
 
                 System.out.println("starting ui");
 
-                startUI((XmlDataManager) remoute);
+                startUI((DataManager) remoute);
             } catch (RemoteException re) {
                 System.err.println("cant export or bind object");
                 re.printStackTrace();
@@ -88,7 +91,7 @@ public class Client {
 
     }
 
-    public static void startUI(XmlDataManager mngr) {
+    public static void startUI(DataManager mngr) {
         // test objs:
         Reader r = new Reader("Ivan", "Ivanovich");
         Book book = new Book(

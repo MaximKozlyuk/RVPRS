@@ -1,5 +1,6 @@
 package PO61.Kozlyuk.wdad.learn.rmi;
 
+import PO61.Kozlyuk.wdad.data.managers.DataManager;
 import PO61.Kozlyuk.wdad.data.managers.PreferencesManager;
 import PO61.Kozlyuk.wdad.data.managers.PreferencesManagerException;
 import PO61.Kozlyuk.wdad.utils.PreferencesManagerConstants;
@@ -16,9 +17,9 @@ import java.rmi.registry.Registry;
  * 1) получает ссылку на экземпляр класса PreferencesManager
  * 2) В зависимости от значений параметров (createregistry, registryaddress, registryport) создаёт
  * или подключается к реестру и регистрирует в нём удаленный объект – экземпляр класса XmlDataManagerImpl,
- * реализующего Remote интерфейс XmlDataManager. Имя удаленного объекта – «XmlDataManager».
+ * реализующего Remote интерфейс DataManager. Имя удаленного объекта – «DataManager».
  * После регистрации, сервер добавляет с помощью PreferencesManager в конфигурационный файл
- * информацию по добавленному объекту (тэг bindedobject, name – XmlDataManager,
+ * информацию по добавленному объекту (тэг bindedobject, name – DataManager,
  * class – полное квалифицированное имя удаленного интерфейса).
  * При реализации XmlDataManagerImpl используется класс XmlTask, реализованный в рамках предыдущей
  * лабораторной работы. XmlDataManagerImpl делегирует выполнение операций с xml-файлами экземпляру
@@ -27,15 +28,9 @@ import java.rmi.registry.Registry;
 
 public class Server {
 
-    static {
-        System.out.println(System.getProperty("user.dir"));
-    }
-
-    private static XmlDataManager xmlDataManager;
+    private static DataManager xmlDataManager;
     static private String securityPolicyPath;
     static final private String EXECUTOR_NAME = "xmlDataManager";
-    static final private String XML_APP_CONFIG_PATH = "appconfig.xml";
-    //static final private String XML_APP_CONFIG_PATH = "./src/PO61/Kozlyuk/wdad/resources/configuration/appconfig.xml";
     static final private String XML_DATA_MANAGER_PATH = "./src/PO61/Kozlyuk/wdad/learn/xml/myLib.xml";
 
     static private PreferencesManager preferencesManager;
@@ -47,7 +42,7 @@ public class Server {
 
 
     public static void main(String[] args) throws ParserConfigurationException, SAXException, IOException, URISyntaxException, PreferencesManagerException {
-        preferencesManager = PreferencesManager.getInstance(XML_APP_CONFIG_PATH);
+        preferencesManager = PreferencesManager.getInstance(PreferencesManagerConstants.XML_APP_CONFIG_PATH);
         xmlDataManager = new XmlDataManagerImpl(XML_DATA_MANAGER_PATH);
         registryAddres = preferencesManager.getProperty(PreferencesManagerConstants.registryaddress);
         codebaseUrl = "file://".concat(Server.class.getProtectionDomain().getCodeSource().getLocation().toURI().getPath());//получает путь до jar файла

@@ -7,6 +7,8 @@ abstract class Human implements Serializable {
     private String firstName;
     private String secondName;
 
+    private long id;
+
     Human(String firstName, String secondName) {
         this.firstName = firstName;
         this.secondName = secondName;
@@ -26,6 +28,14 @@ abstract class Human implements Serializable {
 
     void setSecondName(String secondName) {
         this.secondName = secondName;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     @Override

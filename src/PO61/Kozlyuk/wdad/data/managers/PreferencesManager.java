@@ -1,7 +1,6 @@
 package PO61.Kozlyuk.wdad.data.managers;
 
 import org.w3c.dom.*;
-import org.xml.sax.InputSource;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -18,9 +17,7 @@ import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Hashtable;
-import java.util.Properties;
 import java.util.Set;
-import java.util.function.BiConsumer;
 
 public class PreferencesManager {
 
@@ -217,5 +214,19 @@ public class PreferencesManager {
     public String getClassProvider() {
         return document.getElementsByTagName("classprovider").item(0).getTextContent();
     }
+
+    public String getClassName () { return document.getElementsByTagName("classname").item(0).getTextContent(); }
+
+    public String getDriverType() { return  document.getElementsByTagName("drivertype").item(0).getTextContent(); }
+
+    public String getHostName () { return  document.getElementsByTagName("hostName").item(0).getTextContent(); }
+
+    public int getPort () { return Integer.parseInt(document.getElementsByTagName("port").item(0).getTextContent()); }
+
+    public String getDBName () { return  document.getElementsByTagName("DBName").item(0).getTextContent(); }
+
+    public String getUser () { return  document.getElementsByTagName("user").item(0).getTextContent(); }
+
+    public String getPass () { return  document.getElementsByTagName("pass").item(0).getTextContent(); }
 
 }
