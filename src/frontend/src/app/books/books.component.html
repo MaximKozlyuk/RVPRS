@@ -1,0 +1,41 @@
+<div class="container lib-border" id="books-container"
+     style="padding-top: 0.75em; border-top: 0em">
+  <app-search-books></app-search-books>
+</div>
+<div class="container lib-border" style="border-top: 0; padding-bottom: 1.5em">
+  <div class="row">
+    <div class="col-sm-12" style="padding-left: 3em">
+      <div class="row">
+        <div class="col-sm-1">
+          <h3>New</h3>
+        </div>
+        <div class="col-sm-11"></div>
+      </div>
+      <div class="row">
+        <div class="col-sm-2" *ngFor="let i of books" style="margin-right: 3em">
+          <app-book-ui></app-book-ui>
+        </div>
+        <div class="col-sm-2" style="padding-top: 20.5em; left: 7em">
+          <button class="btn btn-primary">more</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-12"
+       style="padding-left: 2em; border-top: 0.1em solid rgb(23,72,147); margin-top: 1.5em">
+    <div class="row">
+      <div class="col-sm-1">
+        <h3>Popular</h3>
+      </div>
+      <div class="col-sm-11"></div>
+    </div>
+    <div class="row">
+      <div class="col-sm-2" *ngFor="let i of books" style="margin-right: 3em">
+        <app-book-ui></app-book-ui>
+      </div>
+      <div class="col-sm-2" style="padding-top: 20.6em; left: 7em">
+        <button class="btn btn-primary">more</button>
+      </div>
+    </div>
+  </div>
+</div>

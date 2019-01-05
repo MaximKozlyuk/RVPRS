@@ -1,0 +1,12 @@
+.search-check-box {
+  padding-top: 0.5em;
+}
+
+input[type="text"] {
+  background-color: rgb(234,208,235);
+  color: rgb(23,72,147);
+}
+
+::placeholder {
+  color: rgb(23,72,147);
+}

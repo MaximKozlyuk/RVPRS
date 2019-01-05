@@ -1,0 +1,16 @@
+img {
+  max-height: 13em;
+  max-width: 13em;
+}
+
+#book-front {
+  background-color: rgb(234,208,235);
+  border-radius: 1em;
+  box-shadow: 0 0 0.4em rgba(0,0,0,0.5);
+  max-width: 15em;
+  padding: 0.65em;
+}
+
+button {
+  background-color: rgb(23,72,147);
+}

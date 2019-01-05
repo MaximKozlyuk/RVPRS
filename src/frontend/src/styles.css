@@ -1,0 +1,14 @@
+body {
+  background-color: rgb(194,241,248);
+  padding-top: 1.5em;
+  padding-bottom: 1.5em;
+}
+
+.lib-border {
+  border: 0.1em solid rgb(23,72,147);
+}
+
+.lib-border-round {
+  border-radius: 0.25em;
+  border: 0.1em solid rgb(23,72,147);
+}
