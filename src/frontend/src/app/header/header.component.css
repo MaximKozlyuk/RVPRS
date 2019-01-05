@@ -7,8 +7,38 @@ div {
   background-color: rgb(234,208,235);
 }
 
-.button-text {
+.menu-button {
   text-align : center;
   font-weight: bold;
   color: rgb(23,72,147);
+}
+
+.menu-button:hover {
+  background-color: rgb(23,72,147);
+}
+
+.menu-button:hover .menu-button-text {
+ color: rgb(234,208,235)
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.5);
+  z-index: 1;
+  padding-left: 3em;
+  padding-right: 3em;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.search-by-option:hover{
+  font-weight: bold;
 }

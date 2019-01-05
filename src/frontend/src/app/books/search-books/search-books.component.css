@@ -7,6 +7,16 @@ input[type="text"] {
   color: rgb(23,72,147);
 }
 
+#not-selected-input {
+  background-color: rgb(234,208,235);
+  color: rgb(23,72,147);
+}
+
+#selected-input {
+  background-color: rgb(23,72,147);
+  color: rgb(234,208,235);
+}
+
 ::placeholder {
   color: rgb(23,72,147);
 }

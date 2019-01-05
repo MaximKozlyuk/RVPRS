@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-books',
@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BooksComponent implements OnInit {
 
-  private books : number[] = new Array<number>(4);
+  @Input() private books : number[] = new Array<number>(4);
 
   constructor() { }
 

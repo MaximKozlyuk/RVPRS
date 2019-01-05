@@ -17,22 +17,36 @@
     </div>
     <div class="row">
       <a routerLink="/books">
-        <div class="col-sm-3 lib-border" style="border-left: 0em; border-right: 0em">
-          <h5 class="button-text">Книги</h5>
+        <div class="col-sm-3 lib-border menu-button" style="border-left: 0em; border-right: 0em">
+          <h5 class="menu-button-text">Книги</h5>
         </div>
       </a>
       <a routerLink="/aboutLib">
-        <div class="col-sm-3 lib-border" style="border-right: 0em">
-          <h5 class="button-text">О библиотеке</h5>
+        <div class="col-sm-3 lib-border menu-button" style="border-right: 0em">
+          <h5 class="menu-button-text">О библиотеке</h5>
         </div>
       </a>
       <a routerLink="/readers">
-        <div class="col-sm-3 lib-border" style="border-right: 0em">
-          <h5 class="button-text">Читатели</h5>
+        <div class="col-sm-3 lib-border menu-button" style="border-right: 0em">
+          <h5 class="menu-button-text">Читатели</h5>
         </div>
       </a>
-      <div class="col-sm-3 lib-border" style="border-right: 0em">
-        <h5 class="button-text">Сортировать по</h5>
+      <div class="col-sm-3 lib-border dropdown menu-button" style="border-right: 0em">
+        <h5 class="menu-button-text">Сортировать по</h5>
+        <div class="dropdown-content">
+          <div class="row">
+            <h5 class="search-by-option">новизне</h5>
+          </div>
+          <div class="row">
+            <h5 class="search-by-option">популярности</h5>
+          </div>
+          <div class="row">
+            <h5 class="search-by-option">рейтингу</h5>
+          </div>
+          <div class="row">
+            <h5 class="search-by-option">цене</h5>
+          </div>
+        </div>
       </div>
     </div>
   </div>

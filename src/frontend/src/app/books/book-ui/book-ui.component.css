@@ -6,7 +6,7 @@ img {
 #book-front {
   background-color: rgb(234,208,235);
   border-radius: 1em;
-  box-shadow: 0 0 0.4em rgba(0,0,0,0.5);
+  box-shadow: 0 0.2em 0.4em rgba(0,0,0,0.5);
   max-width: 15em;
   padding: 0.65em;
 }
