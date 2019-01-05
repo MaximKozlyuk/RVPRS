@@ -6,7 +6,7 @@ public class Reader extends Human{
 
     private ArrayList<Book> debtBooks;
 
-    Reader(String firstName, String secondName) {
+    public Reader(String firstName, String secondName) {
         super(firstName, secondName);
         debtBooks = new ArrayList<>();
     }
@@ -20,12 +20,19 @@ public class Reader extends Human{
     }
 
     boolean returnBook (Book book) {
-        if (debtBooks.contains(book)) {
-            debtBooks.remove(book);
-            return true;
-        } else {
-            return false;
+//        if (debtBooks.contains(book)) {
+//            debtBooks.remove(book);
+//            return true;
+//        } else {
+//            return false;
+//        }
+        for (int i = 0; i < debtBooks.size(); i++) {
+            if (debtBooks.get(i).equals(book)) {
+                debtBooks.remove(i);
+                return true;
+            }
         }
+        return false;
     }
 
     ArrayList<Book> getDebtBooks() {

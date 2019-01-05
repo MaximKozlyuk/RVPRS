@@ -1,5 +1,7 @@
 package PO61.Kozlyuk.wdad.learn.xml;
 
-public enum Genre {
+import java.io.Serializable;
+
+public enum Genre implements Serializable {
     NOVEL, ODE, OPUS, ARTICLE, STORY, PLAY, SKETCH, EPOPEE, EPOS, ESSAY, OTHER
 }

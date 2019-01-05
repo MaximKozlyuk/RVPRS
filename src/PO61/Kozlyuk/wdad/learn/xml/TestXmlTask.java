@@ -1,9 +1,10 @@
 package PO61.Kozlyuk.wdad.learn.xml;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-public class TestXmlTask {
+public class TestXmlTask implements Serializable {
 
      public TestXmlTask (XmlTask task) {
 

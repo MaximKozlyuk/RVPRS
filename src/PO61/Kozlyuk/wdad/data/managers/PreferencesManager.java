@@ -17,7 +17,10 @@ import javax.xml.xpath.*;
 import java.io.*;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.Hashtable;
 import java.util.Properties;
+import java.util.Set;
+import java.util.function.BiConsumer;
 
 public class PreferencesManager {
 
@@ -26,6 +29,14 @@ public class PreferencesManager {
     private String path;
     private Document document;
     private XPath xPath;
+
+    private static final String[] keys = {"appconfig.rmi.server.registry.createregistry",
+            "appconfig.rmi.server.registry.registryaddress",
+            "appconfig.rmi.server.registry.registryport",
+            "appconfig.rmi.client.policypath",
+            "appconfig.rmi.client.usecodebaseonly",
+            "appconfig.rmi.classprovider"
+    };
 
     private PreferencesManager(String path) throws IOException, SAXException, ParserConfigurationException {
         this.path = path;
@@ -53,32 +64,52 @@ public class PreferencesManager {
     }
 
     public void setProperty(String key, String value) {
-        document.getElementsByTagName(lastElementKey(key)).item(0).setTextContent(value);
+        //document.getElementsByTagName(lastElementKey(key)).item(0).setTextContent(value);
+        try {
+            XPathExpression expr = xPath.compile(key.replace('.','/'));
+
+            Node prop = (Node) expr.evaluate(document, XPathConstants.NODE);
+            prop.setTextContent(value);
+            System.out.println("done");
+        } catch (XPathExpressionException e) {
+            e.printStackTrace();
+        }
         saveXML();
     }
 
-    public String getProperty(String key) {
+    // todo create PrefManager exception
+    public String getProperty(String key) throws PreferencesManagerException {
         //todo use xPath
-        Node node = (Node)xPath.evaluate(key.replace('.', '/'), document, XPathConstants.NODE);
-        System.out.println(node.getNodeType());
-        System.out.println(node.getNodeName());
-        System.out.println(node.getNodeValue());
-        return document.getElementsByTagName(lastElementKey(key)).item(0).getTextContent();
-    }
-
-    public void setProperties(Properties prop) {
-        prop.stringPropertyNames().forEach(s -> setProperty(s,prop.getProperty(s)));
-    }
-
-    public Properties getProperties() {
-        Properties properties = new Properties();
-        String[] keys = {"appconfig.rmi.server.registry.createregistry","appconfig.rmi.server.registry.registryaddress",
-                "appconfig.rmi.server.registry.registryport", "appconfig.rmi.client.policypath",
-                "appconfig.rmi.client.usecodebaseonly","appconfig.rmi.classprovider"};
-        for(String s : keys){
-            properties.setProperty(s,document.getElementsByTagName(lastElementKey(s)).item(0).getTextContent());
+        String out;
+        try {
+            XPathExpression expr = xPath.compile(key.replace('.', '/'));
+            //System.out.println(expr);
+            out = expr.evaluate(document);
+        } catch (XPathExpressionException e) {
+            throw new PreferencesManagerException("smth happened with preferences");
         }
-        return properties;
+        return out;
+    }
+
+    public void setProperties(Hashtable<String,String> table) {
+        Set<String> keySet = table.keySet();
+        for (String s : keySet) {
+            setProperty(s, table.get(s));
+        }
+        //prop.stringPropertyNames().forEach(s -> setProperty(s,prop.getProperty(s)));
+    }
+
+    // todo hash Table , remove Properties
+    public Hashtable<String, String> getProperties() {
+        Hashtable<String, String> props = new Hashtable<>();
+        for(String s : keys){
+            try {
+                props.put(s, getProperty(s));
+            } catch (PreferencesManagerException e) {
+                e.printStackTrace();
+            }
+        }
+        return props;
     }
 
     public void addBindedObject(String name, String className) {
@@ -186,4 +217,5 @@ public class PreferencesManager {
     public String getClassProvider() {
         return document.getElementsByTagName("classprovider").item(0).getTextContent();
     }
+
 }
