@@ -3,8 +3,8 @@
     <reader firstname="Ivan" secondname="Ivanovich">
         <book>
             <author>
-                <secondname>Smth</secondname>
-                <firstname>AnotherAuthor</firstname>
+                <secondname>SecondName</secondname>
+                <firstname>Firstname</firstname>
             </author>
             <name>TitleOfBook</name>
             <printyear>2000</printyear>
